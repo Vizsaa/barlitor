@@ -12,16 +12,16 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        $keyword  = $request->input('search', '');
+        $keyword = $request->input('search', '');
         $category = $request->input('category', '');
-        $sort     = $request->input('sort', 'default');
+        $sort = $request->input('sort', 'default');
 
         $query = Item::query();
 
         if ($keyword) {
             $query->where(function ($q) use ($keyword) {
                 $q->where('title', 'like', "%{$keyword}%")
-                  ->orWhere('description', 'like', "%{$keyword}%");
+                    ->orWhere('description', 'like', "%{$keyword}%");
             });
         }
 
@@ -30,12 +30,24 @@ class ItemController extends Controller
         }
 
         switch ($sort) {
-            case 'price_asc':  $query->orderBy('sell_price', 'asc'); break;
-            case 'price_desc': $query->orderBy('sell_price', 'desc'); break;
-            case 'newest':     $query->orderBy('created_at', 'desc'); break;
-            case 'oldest':     $query->orderBy('created_at', 'asc'); break;
-            case 'type':       $query->orderBy('type')->orderBy('title'); break;
-            default:           $query->orderBy('title', 'asc'); break;
+            case 'price_asc':
+                $query->orderBy('sell_price', 'asc');
+                break;
+            case 'price_desc':
+                $query->orderBy('sell_price', 'desc');
+                break;
+            case 'newest':
+                $query->orderBy('created_at', 'desc');
+                break;
+            case 'oldest':
+                $query->orderBy('created_at', 'asc');
+                break;
+            case 'type':
+                $query->orderBy('type')->orderBy('title');
+                break;
+            default:
+                $query->orderBy('title', 'asc');
+                break;
         }
 
         $items = $query->get();
@@ -94,8 +106,8 @@ class ItemController extends Controller
         if ($request->hasFile('image_path')) {
             $file = $request->file('image_path');
             $filename = uniqid('item_', true) . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('uploads/items'), $filename);
-            $imagePath = 'uploads/items/' . $filename;
+            $file->move(public_path('images/items'), $filename);
+            $imagePath = 'images/items/' . $filename;
         }
 
         Item::create([
@@ -144,8 +156,8 @@ class ItemController extends Controller
         if ($request->hasFile('image_path')) {
             $file = $request->file('image_path');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/items'), $filename);
-            $data['image_path'] = 'uploads/items/' . $filename;
+            $file->move(public_path('images/items'), $filename);
+            $data['image_path'] = 'images/items/' . $filename;
         }
 
         $item->update($data);

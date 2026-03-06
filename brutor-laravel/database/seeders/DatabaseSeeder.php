@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
             'fname' => 'Admin',
             'lname' => 'User',
+            'avatar' => 'images/avatars/jerome.jpg',
         ]);
 
         // Customer user
@@ -29,6 +30,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'customer',
             'fname' => 'John',
             'lname' => 'Doe',
+            'avatar' => 'images/avatars/jerome.jpg',
         ]);
 
         // Suppliers
@@ -54,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'NGK Iridium spark plug for most engines',
             'cost_price' => 150.00,
             'sell_price' => 250.00,
-            'image_path' => '',
+            'image_path' => 'images/items/sparkplug.jpg',
             'category' => 'Engine',
             'stock_quantity' => 50,
             'supplier_id' => 1,
@@ -66,7 +68,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'High-quality oil filter for sedans',
             'cost_price' => 200.00,
             'sell_price' => 350.00,
-            'image_path' => '',
+            'image_path' => 'images/items/oilfilter.jpg',
             'category' => 'Engine',
             'stock_quantity' => 30,
             'supplier_id' => 1,
@@ -78,7 +80,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Ceramic brake pads for front wheels',
             'cost_price' => 800.00,
             'sell_price' => 1200.00,
-            'image_path' => '',
+            'image_path' => 'images/items/diskbrake front.jpg',
             'category' => 'Bodywork',
             'stock_quantity' => 20,
             'supplier_id' => 1,
@@ -90,7 +92,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Electric impact wrench for rent',
             'cost_price' => 3000.00,
             'sell_price' => 150.00,
-            'image_path' => '',
+            'image_path' => 'images/items/impact wrench.jpg',
             'category' => 'Other',
             'stock_quantity' => 5,
             'supplier_id' => 2,
@@ -102,7 +104,7 @@ class DatabaseSeeder extends Seeder
             'description' => '12V 60Ah maintenance-free battery',
             'cost_price' => 3500.00,
             'sell_price' => 4500.00,
-            'image_path' => '',
+            'image_path' => 'images/items/car battery.jpg',
             'category' => 'Electrical',
             'stock_quantity' => 15,
             'supplier_id' => 1,
@@ -114,7 +116,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Fully synthetic 5W-30 engine oil',
             'cost_price' => 400.00,
             'sell_price' => 550.00,
-            'image_path' => '',
+            'image_path' => 'images/items/shell advance.jpg',
             'category' => 'Consumables',
             'stock_quantity' => 100,
             'supplier_id' => 1,

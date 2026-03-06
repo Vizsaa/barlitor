@@ -1,45 +1,80 @@
-@extends('layouts.app')
-@section('title', 'Edit Supplier - BruTor Shop')
+@extends('layouts.admin')
+@section('title', 'Edit Supplier - BruTor Shop Admin')
+@section('title_header', 'Edit Supplier')
 
 @section('content')
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fa-solid fa-pen"></i> Edit Supplier</h4>
+<div class="max-w-2xl mx-auto">
+    <div class="bg-[#1a1a1a] rounded-xl border border-gray-800 shadow-sm overflow-hidden mb-8">
+        <div class="px-6 py-5 border-b border-gray-800 bg-[#111111]">
+            <h3 class="text-lg font-bold text-white flex items-center">
+                <i class="fa-solid fa-pen-to-square text-orange-500 mr-2"></i> Edit Supplier: {{ $supplier->name }}
+            </h3>
+        </div>
+        
+        <div class="p-6">
+            <form method="POST" action="{{ route('admin.suppliers.update', $supplier->supplier_id) }}" class="space-y-6">
+                @csrf
+                @method('PUT')
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-2">Company Name <span class="text-red-500">*</span></label>
+                    <input type="text" name="name" class="bg-[#111111] border border-gray-700 text-white text-sm rounded-md focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5 transition-colors" value="{{ old('name', $supplier->name) }}" required>
                 </div>
-                <div class="card-body p-4">
-                    <form method="POST" action="{{ route('admin.suppliers.update', $supplier->supplier_id) }}">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Name</label>
-                            <input type="text" name="name" class="form-control" value="{{ old('name', $supplier->name) }}" required>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2">Email Address</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <i class="fa-solid fa-envelope text-gray-500"></i>
+                            </div>
+                            <input type="email" name="contact_email" class="bg-[#111111] border border-gray-700 text-white text-sm rounded-md focus:ring-orange-500 focus:border-orange-500 block w-full pl-10 p-2.5 transition-colors" value="{{ old('contact_email', $supplier->contact_email) }}">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Email</label>
-                            <input type="email" name="contact_email" class="form-control" value="{{ old('contact_email', $supplier->contact_email) }}">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2">Phone Number</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <i class="fa-solid fa-phone text-gray-500"></i>
+                            </div>
+                            <input type="text" name="contact_phone" class="bg-[#111111] border border-gray-700 text-white text-sm rounded-md focus:ring-orange-500 focus:border-orange-500 block w-full pl-10 p-2.5 transition-colors" value="{{ old('contact_phone', $supplier->contact_phone) }}">
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Phone</label>
-                            <input type="text" name="contact_phone" class="form-control" value="{{ old('contact_phone', $supplier->contact_phone) }}">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Lead Time</label>
-                            <input type="text" name="lead_time" class="form-control" value="{{ old('lead_time', $supplier->lead_time) }}">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Website</label>
-                            <input type="url" name="website" class="form-control" value="{{ old('website', $supplier->website) }}">
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <a href="{{ route('admin.suppliers.index') }}" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-check"></i> Save Changes</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2">Expected Lead Time</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <i class="fa-solid fa-clock text-gray-500"></i>
+                            </div>
+                            <input type="text" name="lead_time" class="bg-[#111111] border border-gray-700 text-white text-sm rounded-md focus:ring-orange-500 focus:border-orange-500 block w-full pl-10 p-2.5 transition-colors" value="{{ old('lead_time', $supplier->lead_time) }}">
+                        </div>
+                        <p class="mt-1 text-xs text-gray-500">Average time from order to delivery.</p>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-300 mb-2">Website</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <i class="fa-solid fa-globe text-gray-500"></i>
+                            </div>
+                            <input type="url" name="website" class="bg-[#111111] border border-gray-700 text-white text-sm rounded-md focus:ring-orange-500 focus:border-orange-500 block w-full pl-10 p-2.5 transition-colors" value="{{ old('website', $supplier->website) }}">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-800">
+                    <a href="{{ route('admin.suppliers.index') }}" class="px-5 py-2.5 text-sm font-medium text-gray-300 bg-gray-800 hover:bg-gray-700 rounded-md transition-colors border border-gray-700 shadow-sm">
+                        Cancel
+                    </a>
+                    <button type="submit" class="px-5 py-2.5 text-sm font-bold text-white bg-orange-600 hover:bg-orange-700 rounded-md transition-colors shadow-sm flex items-center">
+                        <i class="fa-solid fa-check mr-2"></i> Save Changes
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

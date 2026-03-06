@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function show(Request $request, $id = null)
     {
-        $viewUid = $id ?: (Auth::check() ? Auth::id() : null);
+        $viewUid = $id ?: (Auth::check() ?Auth::id() : null);
 
         if (!$viewUid) {
             return redirect('/')->with('error', 'No user specified.');
@@ -81,9 +81,9 @@ class ProfileController extends Controller
         $file = $request->file('avatar');
         $ext = $file->getClientOriginalExtension();
         $filename = "user_{$userId}_" . time() . ".{$ext}";
-        $file->move(public_path('uploads/avatars'), $filename);
+        $file->move(public_path('images/avatars'), $filename);
 
-        $avatarPath = 'uploads/avatars/' . $filename;
+        $avatarPath = 'images/avatars/' . $filename;
         $user->update(['avatar' => $avatarPath]);
 
         return response()->json(['success' => true, 'path' => $avatarPath]);
