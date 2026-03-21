@@ -41,10 +41,10 @@
 
                     <div>
                         <label for="description" class="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Short Description *</label>
-                        <textarea id="description" name="description" rows="3" required maxlength="64"
+                        <textarea id="description" name="description" rows="3" required maxlength="500"
                             class="bg-[#111111] border {{ $errors->has('description') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-700 focus:ring-orange-500 focus:border-orange-500' }} text-white text-sm rounded-md block w-full px-3 py-2.5 resize-none"
-                            placeholder="Up to 64 characters">{{ old('description') }}</textarea>
-                        <p id="descriptionCounter" class="mt-1 text-xs text-gray-500"><span id="descriptionCount">0</span> / 64 characters</p>
+                            placeholder="Up to 500 characters">{{ old('description') }}</textarea>
+                        <p id="descriptionCounter" class="mt-1 text-xs text-gray-500"><span id="descriptionCount">0</span> / 500 characters</p>
                         @error('description')
                             <p class="mt-1 text-xs text-red-400 flex items-center gap-1">
                                 <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
@@ -229,8 +229,8 @@
                 showError(input, 'Description is required.');
                 return false;
             }
-            if (input.getAttribute('name') === 'description' && input.value.length > 64) {
-                showError(input, 'Description cannot exceed 64 characters.');
+            if (input.getAttribute('name') === 'description' && input.value.length > 500) {
+                showError(input, 'Description cannot exceed 500 characters.');
                 return false;
             }
             if (input.type === 'number' && input.value !== '') {
@@ -253,8 +253,8 @@
                 var len = (descriptionEl.value || '').length;
                 descriptionCounter.textContent = len;
                 if (descriptionCounterWrap) {
-                    descriptionCounterWrap.classList.toggle('text-red-400', len > 64);
-                    descriptionCounterWrap.classList.toggle('text-gray-500', len <= 64);
+                    descriptionCounterWrap.classList.toggle('text-red-400', len > 500);
+                    descriptionCounterWrap.classList.toggle('text-gray-500', len <= 500);
                 }
             }
             descriptionEl.addEventListener('input', updateDescCounter);

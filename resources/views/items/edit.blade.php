@@ -42,10 +42,10 @@
 
                     <div>
                         <label for="description" class="block text-xs font-medium text-gray-400 mb-1 uppercase tracking-wider">Description *</label>
-                        <textarea name="description" id="description" rows="3" required maxlength="64"
+                        <textarea name="description" id="description" rows="3" required maxlength="500"
                             class="bg-[#111111] border {{ $errors->has('description') ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-700 focus:ring-orange-500 focus:border-orange-500' }} text-white text-sm rounded-md block w-full px-3 py-2.5 resize-none"
-                            placeholder="Up to 64 characters">{{ old('description', $item->description) }}</textarea>
-                        <p id="descriptionCounter" class="mt-1 text-xs text-gray-500"><span id="descriptionCount">0</span> / 64 characters</p>
+                            placeholder="Up to 500 characters">{{ old('description', $item->description) }}</textarea>
+                        <p id="descriptionCounter" class="mt-1 text-xs text-gray-500"><span id="descriptionCount">0</span> / 500 characters</p>
                         @error('description')
                             <p class="mt-1 text-xs text-red-400 flex items-center gap-1">
                                 <i class="fa-solid fa-circle-exclamation"></i> {{ $message }}
@@ -152,15 +152,11 @@
                                                 Primary
                                             </span>
                                         @endif
-                                        <form action="{{ route('admin.items.deleteImage', $img->image_id) }}" method="POST"
-                                              onsubmit="return confirm('Remove this image?');"
-                                              class="absolute top-1 right-1">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="w-6 h-6 rounded-full bg-red-900/70 hover:bg-red-800 text-red-200 flex items-center justify-center text-xs border border-red-700">
-                                                <i class="fa-solid fa-xmark"></i>
-                                            </button>
-                                        </form>
+                                        <button type="button" 
+                                                onclick="deleteGalleryImage('{{ route('admin.items.deleteImage', $img->image_id) }}')"
+                                                class="absolute top-1 right-1 w-6 h-6 rounded-full bg-red-900/70 hover:bg-red-800 text-red-200 flex items-center justify-center text-xs border border-red-700">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
                                     </div>
                                 @endforeach
                             </div>
@@ -218,10 +214,23 @@
         </form>
     </div>
 </div>
+
+<form id="deleteImageForm" method="POST" class="hidden">
+    @csrf
+    @method('DELETE')
+</form>
 @endsection
 
 @push('scripts')
 <script>
+    function deleteGalleryImage(url) {
+        if (confirm('Remove this image?')) {
+            var form = document.getElementById('deleteImageForm');
+            form.action = url;
+            form.submit();
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         var form = document.getElementById('itemEditForm');
         var input = document.getElementById('images');
@@ -272,8 +281,8 @@
                 showError(inp, 'Description is required.');
                 return false;
             }
-            if (inp.getAttribute('name') === 'description' && inp.value.length > 64) {
-                showError(inp, 'Description cannot exceed 64 characters.');
+            if (inp.getAttribute('name') === 'description' && inp.value.length > 500) {
+                showError(inp, 'Description cannot exceed 500 characters.');
                 return false;
             }
             if (inp.type === 'number' && inp.value !== '') {
@@ -296,8 +305,8 @@
                 var len = (descriptionEl.value || '').length;
                 descriptionCounter.textContent = len;
                 if (descriptionCounterWrap) {
-                    descriptionCounterWrap.classList.toggle('text-red-400', len > 64);
-                    descriptionCounterWrap.classList.toggle('text-gray-500', len <= 64);
+                    descriptionCounterWrap.classList.toggle('text-red-400', len > 500);
+                    descriptionCounterWrap.classList.toggle('text-gray-500', len <= 500);
                 }
             }
             descriptionEl.addEventListener('input', updateDescCounter);

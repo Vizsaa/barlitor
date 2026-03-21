@@ -148,7 +148,7 @@ class ItemController extends Controller
     {
         $request->validate([
             'title'          => 'required|string|max:255',
-            'description'    => 'required|string|max:64',
+            'description'    => 'required|string|max:500',
             'cost_price'     => 'required|numeric|min:0',
             'sell_price'     => 'required|numeric|min:0',
             'category'       => 'required|string',
@@ -161,7 +161,7 @@ class ItemController extends Controller
             'title.required'          => 'Item title is required.',
             'title.max'               => 'Title cannot exceed 255 characters.',
             'description.required'    => 'Description is required.',
-            'description.max'         => 'Description cannot exceed 64 characters.',
+            'description.max'         => 'Description cannot exceed 500 characters.',
             'cost_price.required'     => 'Cost price is required.',
             'cost_price.numeric'      => 'Cost price must be a valid number.',
             'cost_price.min'          => 'Cost price cannot be negative.',
@@ -229,7 +229,7 @@ class ItemController extends Controller
     {
         $request->validate([
             'title'          => 'required|string|max:255',
-            'description'    => 'required|string|max:64',
+            'description'    => 'required|string|max:500',
             'cost_price'     => 'required|numeric|min:0',
             'sell_price'     => 'required|numeric|min:0',
             'category'       => 'required|string',
@@ -242,7 +242,7 @@ class ItemController extends Controller
             'title.required'          => 'Item title is required.',
             'title.max'               => 'Title cannot exceed 255 characters.',
             'description.required'    => 'Description is required.',
-            'description.max'         => 'Description cannot exceed 64 characters.',
+            'description.max'         => 'Description cannot exceed 500 characters.',
             'cost_price.required'     => 'Cost price is required.',
             'cost_price.numeric'      => 'Cost price must be a valid number.',
             'cost_price.min'          => 'Cost price cannot be negative.',
@@ -269,6 +269,11 @@ class ItemController extends Controller
         $data['supplier_id'] = $request->supplier_id ?: null;
 
         if ($request->hasFile('image_path')) {
+            // Delete old legacy image if exists
+            if ($item->image_path && file_exists(public_path($item->image_path))) {
+                @unlink(public_path($item->image_path));
+            }
+
             $file = $request->file('image_path');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('images/items'), $filename);
@@ -278,17 +283,17 @@ class ItemController extends Controller
         $item->update($data);
 
         if ($request->hasFile('images')) {
-            $existingCount = $item->images()->count();
-            $sortOrder = $existingCount;
+            $hasPrimary = $item->images()->where('is_primary', true)->exists();
+            $sortOrder = $item->images()->count();
 
-            foreach ($request->file('images') as $file) {
+            foreach ($request->file('images') as $index => $file) {
                 $filename = time() . '_' . uniqid('item_', true) . '.' . $file->getClientOriginalExtension();
                 $file->move(public_path('images/items'), $filename);
 
                 ItemImage::create([
                     'item_id' => $item->item_id,
                     'image_path' => 'images/items/' . $filename,
-                    'is_primary' => $existingCount === 0 && $sortOrder === 0,
+                    'is_primary' => !$hasPrimary && $index === 0,
                     'sort_order' => $sortOrder++,
                 ]);
             }
@@ -327,6 +332,8 @@ class ItemController extends Controller
     public function deleteImage($imageId)
     {
         $image = ItemImage::findOrFail($imageId);
+        $itemId = $image->item_id;
+        $wasPrimary = $image->is_primary;
 
         $fullPath = public_path($image->image_path);
         if (file_exists($fullPath)) {
@@ -334,6 +341,14 @@ class ItemController extends Controller
         }
 
         $image->delete();
+
+        // If the deleted image was primary, make the next one primary
+        if ($wasPrimary) {
+            $nextImage = ItemImage::where('item_id', $itemId)->orderBy('sort_order')->first();
+            if ($nextImage) {
+                $nextImage->update(['is_primary' => true]);
+            }
+        }
 
         return back()->with('success', 'Image removed.');
     }

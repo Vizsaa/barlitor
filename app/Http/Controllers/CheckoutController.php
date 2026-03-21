@@ -118,8 +118,8 @@ class CheckoutController extends Controller
             // Record payment
             Payment::create([
                 'transaction_id' => $transactionId,
-                'amount_paid' => $amountPaid,
-                'paid_on' => now(),
+                'amount' => $amountPaid,
+                'payment_date' => now(),
             ]);
 
             $change = $amountPaid - $grandTotal;

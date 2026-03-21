@@ -11,7 +11,7 @@ class Payment extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'transaction_id', 'amount_paid', 'paid_on',
+        'transaction_id', 'payment_type', 'amount', 'payment_date',
     ];
 
     public function order()

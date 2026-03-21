@@ -26,12 +26,13 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)
-            ->where('password', $request->password)
-            ->first();
+        $credentials = $request->only('email', 'password');
 
-        if ($user) {
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
             if ($user->status === 'inactive') {
+                Auth::logout();
                 return back()
                     ->with('error', 'Your account has been deactivated. Please contact support.')
                     ->withInput(['email' => $request->email]);
@@ -40,13 +41,13 @@ class AuthController extends Controller
             // Seeded demo accounts bypass email verification
             $bypassVerification = in_array($user->email, ['admin@brutor.com', 'john@example.com'], true);
             if (!$bypassVerification && !$user->hasVerifiedEmail()) {
+                Auth::logout();
                 return back()
                     ->with('error', 'Your email address is not verified. Please check your inbox.')
                     ->with('unverified_email', $user->email)
                     ->withInput(['email' => $request->email]);
             }
 
-            Auth::login($user);
             $request->session()->regenerate();
             return redirect('/')->with('success', 'Login successful. Welcome, ' . $user->name . '!');
         }

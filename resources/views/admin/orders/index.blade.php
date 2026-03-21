@@ -78,7 +78,7 @@
                                             @endif
                                             @if($order->payment)
                                                 <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-green-900/20 border border-green-800 text-green-300">
-                                                    <i class="fa-solid fa-check mr-1"></i> Paid ₱{{ number_format($order->payment->amount_paid, 2) }}
+                                                    <i class="fa-solid fa-check mr-1"></i> Paid ₱{{ number_format($order->payment->amount, 2) }}
                                                 </span>
                                             @else
                                                 <span class="inline-flex items-center px-2 py-0.5 rounded-full bg-red-900/20 border border-red-800 text-red-300">

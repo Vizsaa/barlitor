@@ -11,9 +11,9 @@ return new class extends Migration
         Schema::create('item', function (Blueprint $table) {
             $table->increments('item_id');
             $table->text('title');
-            $table->string('description', 64);
-            $table->decimal('cost_price', 7, 2)->nullable();
-            $table->decimal('sell_price', 7, 2)->nullable();
+            $table->text('description');
+            $table->decimal('cost_price', 10, 2)->nullable();
+            $table->decimal('sell_price', 10, 2)->nullable();
             $table->text('image_path');
             $table->timestamps();
             $table->softDeletes();

@@ -49,7 +49,7 @@ class ReceiptController extends Controller
             ];
         }
 
-        $amountPaid = (float) optional($order->payment)->amount_paid;
+        $amountPaid = (float) optional($order->payment)->amount;
         $change = max(0, $amountPaid - $grandTotal);
 
         $pdf = Pdf::loadView('receipts.pdf', [

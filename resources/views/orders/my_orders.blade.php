@@ -177,11 +177,11 @@
                                         <i class="fa-solid fa-credit-card text-orange-400"></i> Payment
                                     </div>
                                     <div class="text-sm text-gray-300">
-                                        <span class="text-gray-500">Amount:</span>
-                                        <span class="font-bold text-white">₱{{ number_format($order->payment->amount_paid, 2) }}</span>
+                                        <span class="text-gray-500">Amount Paid:</span>
+                                        <span class="font-bold text-white">₱{{ number_format($order->payment->amount, 2) }}</span>
                                         <span class="text-gray-600 mx-2">•</span>
                                         <span class="text-gray-500">Paid on:</span>
-                                        <span class="font-semibold text-gray-200">{{ $order->payment->paid_on }}</span>
+                                        <span class="font-semibold text-gray-200">{{ $order->payment->payment_date }}</span>
                                     </div>
                                 </div>
                             </div>

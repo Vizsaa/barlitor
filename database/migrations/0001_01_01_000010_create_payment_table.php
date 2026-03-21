@@ -11,8 +11,9 @@ return new class extends Migration
         Schema::create('payment', function (Blueprint $table) {
             $table->increments('payment_id');
             $table->unsignedInteger('transaction_id');
-            $table->decimal('amount_paid', 10, 2);
-            $table->timestamp('paid_on')->useCurrent();
+            $table->string('payment_type', 32)->nullable();
+            $table->decimal('amount', 10, 2);
+            $table->timestamp('payment_date')->useCurrent();
 
             $table->foreign('transaction_id')
                   ->references('orderinfo_id')
