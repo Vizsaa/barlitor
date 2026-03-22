@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Login - BruTor Shop')
+@section('title', 'Login - BarliTor Shop')
 
 @section('content')
 <div class="min-h-[70vh] flex items-center justify-center py-10 px-4">
@@ -11,7 +11,7 @@
             <h1 class="text-2xl font-bold text-white tracking-tight">
                 Welcome back
             </h1>
-            <p class="text-sm text-gray-400 mt-1">Sign in to your BruTor Shop account</p>
+            <p class="text-sm text-gray-400 mt-1">Sign in to your BarliTor Shop account</p>
         </div>
 
         @if(session('error'))

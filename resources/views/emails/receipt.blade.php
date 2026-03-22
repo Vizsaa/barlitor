@@ -13,7 +13,7 @@
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
                     <div>
                         <div style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#9ca3af;font-weight:700;">
-                            BruTor Shop
+                            BarliTor Shop
                         </div>
                         <div style="font-size:22px;font-weight:900;color:#ffffff;margin-top:4px;">
                             Transaction Receipt
@@ -33,7 +33,7 @@
             <!-- Content -->
             <div style="padding:22px;">
                 <div style="font-size:13px;color:#9ca3af;line-height:1.6;">
-                    Hi {{ $customerName }}, thanks for shopping with BruTor. Here’s a summary of your transaction.
+                    Hi {{ $customerName }}, thanks for shopping with BarliTor. Here’s a summary of your transaction.
                 </div>
 
                 <!-- Quick Actions -->
@@ -154,7 +154,7 @@
             <!-- Footer -->
             <div style="padding:16px 22px;border-top:1px solid #1f2937;background:#0f0f0f;">
                 <div style="font-size:12px;color:#6b7280;line-height:1.6;">
-                    © {{ date('Y') }} BruTor Shop. All rights reserved.<br>
+                    © {{ date('Y') }} BarliTor Shop. All rights reserved.<br>
                     This is an automated message — please do not share sensitive information via email.
                 </div>
             </div>

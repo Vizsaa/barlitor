@@ -11,7 +11,7 @@
             <tr>
                 <td>
                     <div style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#6b7280; font-weight:700;">
-                        BruTor Shop
+                        BarliTor Shop
                     </div>
                     <div style="font-size:26px; font-weight:900; margin-top:6px;">
                         Transaction Receipt
@@ -116,7 +116,7 @@
         </table>
 
         <div style="margin-top:18px; font-size:10px; color:#9ca3af; line-height:1.6;">
-            © {{ date('Y') }} BruTor Shop. This receipt is generated automatically.
+            © {{ date('Y') }} BarliTor Shop. This receipt is generated automatically.
         </div>
     </div>
 </body>

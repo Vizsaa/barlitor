@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'BruTor Shop')</title>
+    <title>@yield('title', 'BarliTor Shop')</title>
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
                 <!-- Logo & Desktop Menu -->
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center gap-2 text-white font-bold text-xl tracking-tight">
-                        <i class="fa-solid fa-store text-orange-500"></i> BruTor Shop
+                        <i class="fa-solid fa-store text-orange-500"></i> BarliTor Shop
                     </a>
                     
                     <div class="hidden md:ml-8 md:flex md:space-x-4">
@@ -241,12 +241,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
                 <a href="{{ route('home') }}" class="text-white font-bold text-lg flex items-center gap-2">
-                    <i class="fa-solid fa-store text-orange-500"></i> BruTor Shop
+                    <i class="fa-solid fa-store text-orange-500"></i> BarliTor Shop
                 </a>
                 <p class="text-gray-500 text-sm mt-1">Quality motorcycle parts & tools</p>
             </div>
             <div class="text-gray-500 text-sm">
-                &copy; {{ date('Y') }} BruTor Shop. All rights reserved.
+                &copy; {{ date('Y') }} BarliTor Shop. All rights reserved.
             </div>
         </div>
     </footer>

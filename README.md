@@ -1,6 +1,6 @@
-# BruTor Shop
+# BarliTor Shop
 
-**BruTor Shop** is a full-stack automotive shop web application for managing **product sales**, **tool rentals**, shopping cart, checkout with email receipts, user accounts with email verification, and admin reporting. It is built on **Laravel 12** with a dark-themed **Tailwind CSS** frontend.
+**BarliTor Shop** is a full-stack automotive shop web application for managing **product sales**, **tool rentals**, shopping cart, checkout with email receipts, user accounts with email verification, and admin reporting. It is built on **Laravel 12** with a dark-themed **Tailwind CSS** frontend.
 
 ---
 
@@ -24,7 +24,7 @@
 
 ## Overview
 
-BruTor Shop serves two main user roles:
+BarliTor Shop serves two main user roles:
 
 - **Customers** — Browse items (products and rental tools), search and filter, add to cart, checkout, receive email receipts, manage profile, and leave reviews for items they have purchased or rented.
 - **Admins** — In addition to customer features, admins manage the catalog (items, images, suppliers), users, expenses, and view/export sales and rental reports.
@@ -122,7 +122,7 @@ Then open **http://127.0.0.1:8000** in your browser.
 
 | Role      | Email             | Password  |
 |----------|-------------------|-----------|
-| **Admin**   | admin@brutor.com   | admin123  |
+| **Admin**   | admin@barlitor.com   | admin123  |
 | **Customer**| john@example.com   | password  |
 
 These accounts are created by the database seeder and (for demo) bypass email verification.
@@ -277,7 +277,7 @@ The **global error list** (all validation errors in a red alert at the top) is r
 
 ### Email
 
-- **Verification** — After register, a verification link is sent; users can open it or request a resend from the “verify pending” page. Demo accounts (e.g. admin@brutor.com, john@example.com) are treated as already verified.
+- **Verification** — After register, a verification link is sent; users can open it or request a resend from the “verify pending” page. Demo accounts (e.g. admin@barlitor.com, john@example.com) are treated as already verified.
 - **Receipts** — After a successful checkout, a receipt email is sent to the customer (when SMTP is configured, e.g. Mailtrap).
 
 ### File uploads
@@ -311,8 +311,8 @@ MAIL_PORT=587
 MAIL_USERNAME=your_mailtrap_username
 MAIL_PASSWORD=your_mailtrap_password
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS="no-reply@brutor.com"
-MAIL_FROM_NAME="BruTor Shop"
+MAIL_FROM_ADDRESS="no-reply@barlitor.com"
+MAIL_FROM_NAME="BarliTor Shop"
 ```
 
 Then check the Mailtrap inbox to see test emails (receipts and verification links).

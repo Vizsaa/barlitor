@@ -2,20 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Supplier;
-use App\Models\Item;
+use App\Models\Barcode;
 use App\Models\Customer;
+use App\Models\Expense;
+use App\Models\Item;
+use App\Models\ItemImage;
+use App\Models\ItemReview;
 use App\Models\OrderInfo;
 use App\Models\OrderLine;
 use App\Models\Payment;
 use App\Models\ProductSold;
 use App\Models\Rental;
-use App\Models\Expense;
-use App\Models\ItemReview;
-use App\Models\ItemImage;
-use App\Models\Barcode;
 use App\Models\Stock;
+use App\Models\Supplier;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         // Admin user
         $admin = User::create([
             'name' => 'Admin User',
-            'email' => 'admin@brutor.com',
+            'email' => 'admin@barlitor.com',
             'password' => bcrypt('admin123'),
             'role' => 'admin',
             'fname' => 'Admin',
@@ -120,7 +120,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Lightweight high-performance exhaust that improves throttle response and engine sound.',
             'cost_price' => 38500.00,
             'sell_price' => 46160.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Akrapovič Slip-On Exhaust (Titanium).jpg',
             'category' => 'Engine',
             'stock_quantity' => 10,
             'supplier_id' => $supplier1->supplier_id,
@@ -132,7 +132,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'An autonomous wearable airbag system that provides upper body protection during a crash.',
             'cost_price' => 39000.00,
             'sell_price' => 48500.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Alpinestars Tech-Air 5 Airbag Vest.png',
             'category' => 'Bodywork (Safety)',
             'stock_quantity' => 5,
             'supplier_id' => $supplier2->supplier_id,
@@ -144,7 +144,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'High-performance AGM battery commonly used for NMAX, Click, and ADV models.',
             'cost_price' => 1650.00,
             'sell_price' => 2100.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Yuasa YTZ6V Maintenance-Free Battery.jpg',
             'category' => 'Electrical',
             'stock_quantity' => 25,
             'supplier_id' => $supplier1->supplier_id,
@@ -156,7 +156,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'A specialized mount add-on that protects smartphone camera sensors from engine vibrations.',
             'cost_price' => 1150.00,
             'sell_price' => 1699.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Quad Lock Vibration Dampener.jpg',
             'category' => 'Other (Accessories)',
             'stock_quantity' => 50,
             'supplier_id' => $supplier2->supplier_id,
@@ -168,7 +168,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Carbon fiber helmet with built-in 4K camera, navigation LEDs, and Harman Kardon audio.',
             'cost_price' => 51000.00,
             'sell_price' => 62500.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Forcite MK1S Smart Helmet.jpg',
             'category' => 'Other (Safety)',
             'stock_quantity' => 3,
             'supplier_id' => $supplier2->supplier_id,
@@ -180,7 +180,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Professional-grade handheld tool for diagnosing battery and electrical wiring issues.',
             'cost_price' => 2800.00,
             'sell_price' => 3840.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Fluke 101 Digital Multimeter.jpg',
             'category' => 'Electrical',
             'stock_quantity' => 12,
             'supplier_id' => $supplier2->supplier_id,
@@ -192,7 +192,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Replaces a full set of metric and imperial wrenches; smooth jaws prevent damage to chrome bolts.',
             'cost_price' => 2950.00,
             'sell_price' => 3730.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Knipex 86 03 180 Pliers Wrench.jpg',
             'category' => 'Bodywork (Tools)',
             'stock_quantity' => 8,
             'supplier_id' => $supplier2->supplier_id,
@@ -204,7 +204,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Tool used to ensure axle nuts and engine bolts are tightened to exact manufacturer specs.',
             'cost_price' => 1200.00,
             'sell_price' => 1600.00, // Deposit
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Drive Click-Type Torque Wrench.jpg',
             'category' => 'Other (Maintenance)',
             'stock_quantity' => 5,
             'supplier_id' => $supplier2->supplier_id,
@@ -216,7 +216,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Specialty tool used to break, press, and rivet motorcycle drive chains.',
             'cost_price' => 5800.00,
             'sell_price' => 500.00, // Daily Rental
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Motion Pro PBR Chain Tool.jpg',
             'category' => 'Other (Maintenance)',
             'stock_quantity' => 2,
             'supplier_id' => $supplier2->supplier_id,
@@ -228,7 +228,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Complete kit including engine oil, filter, and O-rings for a single service.',
             'cost_price' => 3400.00,
             'sell_price' => 4250.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Spectro V-Twin Full Synthetic Oil Kit.jpg',
             'category' => 'Consumables',
             'stock_quantity' => 15,
             'supplier_id' => $supplier1->supplier_id,
@@ -241,7 +241,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Performance upgrade to increase air intake, providing better acceleration and top-end power.',
             'cost_price' => 3100.00,
             'sell_price' => 3850.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Yamaha Sniper 155 Throttle Body (34mm).png',
             'category' => 'Engine',
             'stock_quantity' => 12,
             'supplier_id' => $supplier1->supplier_id,
@@ -253,7 +253,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Auxiliary LED lights with high-beam (white) and low-beam (yellow) for better visibility in rain or fog.',
             'cost_price' => 280.00,
             'sell_price' => 425.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Firefly Mini Driving Light V2 (Dual Color).jpg',
             'category' => 'Electrical',
             'stock_quantity' => 40,
             'supplier_id' => $supplier1->supplier_id,
@@ -265,7 +265,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'High-precision brake lever and pump that provides a more responsive and "solid" braking feel.',
             'cost_price' => 2100.00,
             'sell_price' => 2850.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/RCB (Racing Boy) S1 Forged Brake Master Cylinder.jpg',
             'category' => 'Bodywork',
             'stock_quantity' => 8,
             'supplier_id' => $supplier1->supplier_id,
@@ -277,7 +277,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Premium wet-weather tire designed for high-grip performance on Philippine asphalt.',
             'cost_price' => 1100.00,
             'sell_price' => 2990.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Metzeler Roadtec Scooter Tire.jpg',
             'category' => 'Consumables',
             'stock_quantity' => 20,
             'supplier_id' => $supplier1->supplier_id,
@@ -289,7 +289,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Heavy-duty drive chain set known for durability and reduced friction; a favorite for underbone bikes.',
             'cost_price' => 1800.00,
             'sell_price' => 2450.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/RK Takasago Gold Chain & Sprocket Set (428 Series).jpg',
             'category' => 'Consumables',
             'stock_quantity' => 15,
             'supplier_id' => $supplier1->supplier_id,
@@ -301,7 +301,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'A loud, car-like deep tone horn upgrade to ensure you are heard by larger vehicles on the road.',
             'cost_price' => 210.00,
             'sell_price' => 325.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/PIAA OTO Style Horn (12V).jpg',
             'category' => 'Electrical',
             'stock_quantity' => 30,
             'supplier_id' => $supplier1->supplier_id,
@@ -313,7 +313,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'Double-stitched nylon cover that protects the bike from UV rays, rain, and dust during storage.',
             'cost_price' => 1050.00,
             'sell_price' => 1490.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Oxford Aquatex Waterproof Motorcycle Cover.jpg',
             'category' => 'Other',
             'stock_quantity' => 10,
             'supplier_id' => $supplier2->supplier_id,
@@ -325,7 +325,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'High-torque power tool used for quickly removing stubborn axle nuts or CVT bolts.',
             'cost_price' => 1650.00,
             'sell_price' => 250.00, // Daily Rental
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Makita Brushless Impact Wrench.jpg',
             'category' => 'Other (Tools)',
             'stock_quantity' => 4,
             'supplier_id' => $supplier2->supplier_id,
@@ -337,7 +337,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'A comprehensive set of sockets and driver bits used for almost all general motorcycle repairs.',
             'cost_price' => 850.00,
             'sell_price' => 1150.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/Flyman 46-Piece Socket Wrench Set.jpg',
             'category' => 'Other (Tools)',
             'stock_quantity' => 20,
             'supplier_id' => $supplier2->supplier_id,
@@ -349,7 +349,7 @@ class DatabaseSeeder extends Seeder
             'description' => 'A compact power bank capable of jump-starting a motorcycle with a dead battery in seconds.',
             'cost_price' => 820.00,
             'sell_price' => 1098.00,
-            'image_path' => 'images/items/default.png',
+            'image_path' => 'images/items/12V Portable Jump Starter (98800mAh).jpg',
             'category' => 'Electrical',
             'stock_quantity' => 15,
             'supplier_id' => $supplier2->supplier_id,

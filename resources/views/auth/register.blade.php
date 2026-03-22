@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Register - BruTor Shop')
+@section('title', 'Register - BarliTor Shop')
 
 @section('content')
 <div class="min-h-[70vh] flex items-center justify-center py-10 px-4">
@@ -9,7 +9,7 @@
                 <i class="fa-solid fa-user-plus text-orange-500"></i>
                 <span>Create Account</span>
             </h1>
-            <p class="text-sm text-gray-400 mt-1">Join BruTor Shop and start shopping or renting tools.</p>
+            <p class="text-sm text-gray-400 mt-1">Join BarliTor Shop and start shopping or renting tools.</p>
         </div>
 
         <form id="registerForm" method="POST" action="{{ route('register') }}" enctype="multipart/form-data" class="space-y-5">

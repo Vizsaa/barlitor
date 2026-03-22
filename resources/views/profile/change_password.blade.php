@@ -1,36 +1,69 @@
 @extends('layouts.app')
-@section('title', 'Change Password - BruTor Shop')
+@section('title', 'Change Password - BarliTor Shop')
 
 @section('content')
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-warning text-dark">
-                    <h4 class="mb-0"><i class="fa-solid fa-key"></i> Change Password</h4>
+<div class="max-w-md mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="bg-[#111111] rounded-xl border border-gray-800 shadow-2xl overflow-hidden">
+        {{-- Header --}}
+        <div class="px-6 py-5 border-b border-gray-800">
+            <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-key text-orange-500"></i> Change Password
+            </h4>
+        </div>
+
+        {{-- Form Body --}}
+        <div class="px-6 py-6 border-b border-gray-800">
+            <form method="POST" action="{{ route('profile.updatePassword') }}" class="space-y-5">
+                @csrf
+                
+                {{-- Current Password --}}
+                <div>
+                    <label for="current_password" class="block text-sm font-medium text-gray-400 mb-1">
+                        Current Password
+                    </label>
+                    <input type="password" id="current_password" name="current_password" required
+                           class="w-full bg-[#151515] border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors">
+                    @error('current_password')
+                        <p class="mt-1 text-red-500 text-sm"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</p>
+                    @enderror
                 </div>
-                <div class="card-body p-4">
-                    <form method="POST" action="{{ route('profile.updatePassword') }}">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="current_password" class="form-label fw-semibold">Current Password</label>
-                            <input type="password" class="form-control" id="current_password" name="current_password" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="new_password" class="form-label fw-semibold">New Password</label>
-                            <input type="password" class="form-control" id="new_password" name="new_password" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="new_password_confirmation" class="form-label fw-semibold">Confirm New Password</label>
-                            <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" required>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <a href="{{ route('profile.show', auth()->id()) }}" class="btn btn-secondary">Cancel</a>
-                            <button type="submit" class="btn btn-warning"><i class="fa-solid fa-check"></i> Update Password</button>
-                        </div>
-                    </form>
+
+                {{-- New Password --}}
+                <div>
+                    <label for="new_password" class="block text-sm font-medium text-gray-400 mb-1">
+                        New Password
+                    </label>
+                    <input type="password" id="new_password" name="new_password" required
+                           class="w-full bg-[#151515] border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors">
+                    @error('new_password')
+                        <p class="mt-1 text-red-500 text-sm"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</p>
+                    @enderror
                 </div>
-            </div>
+
+                {{-- Confirm New Password --}}
+                <div>
+                    <label for="new_password_confirmation" class="block text-sm font-medium text-gray-400 mb-1">
+                        Confirm New Password
+                    </label>
+                    <input type="password" id="new_password_confirmation" name="new_password_confirmation" required
+                           class="w-full bg-[#151515] border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors">
+                </div>
+
+                {{-- Actions --}}
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="submit" class="bg-orange-600 hover:bg-orange-500 text-white px-5 py-2.5 rounded-md font-semibold transition-colors flex items-center shadow-lg">
+                        <i class="fa-solid fa-check mr-2"></i> Update Password
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        {{-- Footer/Cancel --}}
+        <div class="px-6 py-4 bg-[#151515] flex justify-between items-center">
+            <span class="text-sm text-gray-500">Secure your account</span>
+            <a href="{{ route('profile.show', auth()->id()) }}" class="text-sm text-gray-400 hover:text-white transition-colors">
+                <i class="fa-solid fa-arrow-left mr-1"></i> Back to Profile
+            </a>
         </div>
     </div>
 </div>

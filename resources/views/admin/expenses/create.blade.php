@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Add Expense - BruTor Shop Admin')
+@section('title', 'Add Expense - BarliTor Shop Admin')
 @section('title_header', 'Add Expense')
 
 @section('content')

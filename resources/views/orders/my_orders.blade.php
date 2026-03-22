@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'My Orders - BruTor Shop')
+@section('title', 'My Orders - BarliTor Shop')
 
 @section('content')
 <div class="bg-[#1a1a1a] border-b border-gray-800 py-6">
@@ -126,7 +126,20 @@
                                         <tbody class="divide-y divide-gray-800/60 border border-gray-800 border-t-0">
                                             @foreach($order->productsSold as $ps)
                                                 <tr class="hover:bg-[#111111] transition-colors">
-                                                    <td class="px-4 py-3 text-white">{{ $ps->item->title ?? 'N/A' }}</td>
+                                                    <td class="px-4 py-3 text-white">
+                                                        <div class="flex items-center justify-between">
+                                                            <span>{{ $ps->item->title ?? 'N/A' }}</span>
+                                                            @php
+                                                                $itemId = $ps->item->item_id ?? null;
+                                                                $canReview = $itemId && in_array(strtolower($status), ['delivered', 'completed']) && !in_array($itemId, $reviewedItemIds);
+                                                            @endphp
+                                                            @if($canReview)
+                                                                <a href="{{ route('items.show', $itemId) }}#reviews" class="ml-3 inline-flex items-center text-[10px] uppercase tracking-wider bg-orange-600 hover:bg-orange-500 text-white font-bold px-2.5 py-1 rounded shadow-sm border border-orange-700 transition-colors">
+                                                                    <i class="fa-solid fa-pen-to-square mr-1"></i> Review
+                                                                </a>
+                                                            @endif
+                                                        </div>
+                                                    </td>
                                                     <td class="px-4 py-3 text-center text-gray-300">{{ (int) $ps->quantity }}</td>
                                                     <td class="px-4 py-3 text-right text-gray-300">₱{{ number_format($ps->rate_charged, 2) }}</td>
                                                     <td class="px-4 py-3 text-right font-bold text-gray-100">₱{{ number_format($ps->quantity * $ps->rate_charged, 2) }}</td>
@@ -157,7 +170,20 @@
                                         <tbody class="divide-y divide-gray-800/60 border border-gray-800 border-t-0">
                                             @foreach($order->rentals as $r)
                                                 <tr class="hover:bg-[#111111] transition-colors">
-                                                    <td class="px-4 py-3 text-white">{{ $r->item->title ?? 'N/A' }}</td>
+                                                    <td class="px-4 py-3 text-white">
+                                                        <div class="flex items-center justify-between">
+                                                            <span>{{ $r->item->title ?? 'N/A' }}</span>
+                                                            @php
+                                                                $rentalItemId = $r->item->item_id ?? null;
+                                                                $canReviewRental = $rentalItemId && in_array(strtolower($status), ['delivered', 'completed', 'returned']) && !in_array($rentalItemId, $reviewedItemIds);
+                                                            @endphp
+                                                            @if($canReviewRental)
+                                                                <a href="{{ route('items.show', $rentalItemId) }}#reviews" class="ml-3 inline-flex items-center text-[10px] uppercase tracking-wider bg-orange-600 hover:bg-orange-500 text-white font-bold px-2.5 py-1 rounded shadow-sm border border-orange-700 transition-colors">
+                                                                    <i class="fa-solid fa-pen-to-square mr-1"></i> Review
+                                                                </a>
+                                                            @endif
+                                                        </div>
+                                                    </td>
                                                     <td class="px-4 py-3 text-center text-gray-300">{{ $r->start_date }}</td>
                                                     <td class="px-4 py-3 text-center text-gray-300">{{ $r->due_date }}</td>
                                                     <td class="px-4 py-3 text-center text-gray-300">{{ (int) $r->quantity }}</td>

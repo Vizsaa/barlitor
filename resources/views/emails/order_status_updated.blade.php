@@ -10,7 +10,7 @@
         <div style="max-width:720px;margin:0 auto;background:#111111;border:1px solid #1f2937;border-radius:16px;overflow:hidden;">
             <div style="padding:18px 22px;border-bottom:1px solid #1f2937;background:#0f0f0f;">
                 <div style="font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#9ca3af;font-weight:700;">
-                    BruTor Shop
+                    BarliTor Shop
                 </div>
                 <div style="font-size:20px;font-weight:900;color:#ffffff;margin-top:6px;">
                     Your order status was updated
@@ -43,7 +43,7 @@
 
             <div style="padding:16px 22px;border-top:1px solid #1f2937;background:#0f0f0f;">
                 <div style="font-size:12px;color:#6b7280;line-height:1.6;">
-                    © {{ date('Y') }} BruTor Shop. All rights reserved.
+                    © {{ date('Y') }} BarliTor Shop. All rights reserved.
                 </div>
             </div>
         </div>

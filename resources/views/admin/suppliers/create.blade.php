@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Add Supplier - BruTor Shop Admin')
+@section('title', 'Add Supplier - BarliTor Shop Admin')
 @section('title_header', 'Add Supplier')
 
 @section('content')

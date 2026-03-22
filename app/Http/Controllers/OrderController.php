@@ -28,6 +28,9 @@ class OrderController extends Controller
 
         $orders = $query->orderByDesc('date_placed')->orderByDesc('orderinfo_id')->get();
 
-        return view('orders.my_orders', compact('orders', 'dateFrom', 'dateTo'));
+        // Get all item IDs the user has already reviewed
+        $reviewedItemIds = \App\Models\ItemReview::where('user_id', $userId)->pluck('item_id')->toArray();
+
+        return view('orders.my_orders', compact('orders', 'dateFrom', 'dateTo', 'reviewedItemIds'));
     }
 }

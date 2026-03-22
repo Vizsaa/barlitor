@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin Dashboard - BruTor Shop')</title>
+    <title>@yield('title', 'Admin Dashboard - BarliTor Shop')</title>
     
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +29,7 @@
                   transform -translate-x-full md:translate-x-0 transition-transform duration-200 ease-out">
         <div class="h-16 flex items-center px-6 border-b border-gray-800">
             <a href="{{ route('home') }}" class="text-white font-bold text-xl tracking-tight flex items-center gap-2">
-                <i class="fa-solid fa-store text-orange-500"></i> BruTor <span class="text-xs text-gray-500 font-normal ml-1">ADMIN</span>
+                <i class="fa-solid fa-store text-orange-500"></i> BarliTor <span class="text-xs text-gray-500 font-normal ml-1">ADMIN</span>
             </a>
         </div>
         
@@ -94,7 +94,7 @@
                     <span class="sr-only">Open sidebar</span>
                     <i class="fa-solid fa-bars text-xl"></i>
                 </button>
-                <span class="ml-3 font-bold text-white tracking-tight">BruTor Shop</span>
+                <span class="ml-3 font-bold text-white tracking-tight">BarliTor Shop</span>
             </div>
             
             <div class="hidden md:flex flex-1 justify-between px-4">

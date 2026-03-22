@@ -1,4 +1,4 @@
-# BruTor Shop — Laravel
+# BarliTor Shop — Laravel
 
 A full-featured automotive shop web application built with **Laravel 12**. Supports product sales, tool rentals, shopping cart, checkout with email receipts, user management, and admin reporting.
 
@@ -29,7 +29,7 @@ A full-featured automotive shop web application built with **Laravel 12**. Suppo
 
 Place the project folder somewhere accessible, e.g.:
 ```
-C:\Users\YourName\brutor-laravel\
+C:\Users\YourName\barlitor-laravel\
 ```
 
 ### 2. Install PHP dependencies
@@ -87,7 +87,7 @@ Then open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.
 
 | Role     | Email                | Password   |
 |----------|----------------------|------------|
-| Admin    | admin@brutor.com     | admin123   |
+| Admin    | admin@barlitor.com     | admin123   |
 | Customer | john@example.com     | password   |
 
 ---

@@ -20,7 +20,7 @@ class EmailVerificationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Verify Your BruTor Shop Account',
+            subject: 'Verify Your BarliTor Shop Account',
         );
     }
 

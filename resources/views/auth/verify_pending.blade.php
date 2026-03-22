@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Verify Your Email - BruTor Shop')
+@section('title', 'Verify Your Email - BarliTor Shop')
 
 @section('content')
 <div class="min-h-[70vh] flex items-center justify-center py-10 px-4">

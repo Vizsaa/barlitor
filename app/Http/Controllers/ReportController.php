@@ -163,7 +163,7 @@ class ReportController extends Controller
 
     private function exportCsv($dateFrom, $dateTo, $viewType)
     {
-        $filename = "brutor_report_{$dateFrom}_to_{$dateTo}.csv";
+        $filename = "barlitor_report_{$dateFrom}_to_{$dateTo}.csv";
 
         $headers = [
             'Content-Type' => 'text/csv; charset=utf-8',

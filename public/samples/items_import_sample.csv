@@ -1,0 +1,6 @@
+title,description,cost_price,sell_price,category,type,stock_quantity,supplier_id
+"NGK Iridium Spark Plug","Premium iridium spark plug for 4-stroke motorcycle engines. Long-lasting and reliable ignition performance.",120.00,250.00,Engine,product,75,
+"Motul 5100 Engine Oil 1L","Semi-synthetic 4T engine oil 10W-40. Ideal for daily riders and weekend warriors.",380.00,550.00,Consumables,product,40,
+"LED Headlight Bulb H4","High-brightness LED replacement for H4 halogen bulbs. 6000K cool white with improved visibility.",200.00,450.00,Electrical,product,60,
+"Universal Brake Lever Set","CNC aluminum adjustable brake and clutch lever set. Fits most Japanese motorcycles.",350.00,650.00,Bodywork,product,25,
+"Torque Wrench 1/2 Drive","Professional-grade torque wrench 10-150 Nm. Essential for engine and chassis work.",1200.00,180.00,Other,tool,8,

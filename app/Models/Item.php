@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Storage;
 use Laravel\Scout\Searchable;
 
 class Item extends Model
 {
-    use SoftDeletes, Searchable;
+    use Searchable, SoftDeletes;
 
     protected $table = 'item';
+
     protected $primaryKey = 'item_id';
 
     protected $fillable = [
@@ -62,7 +62,7 @@ class Item extends Model
             return asset($this->image_path);
         }
 
-        return asset('images/default.png');
+        return asset('images/items/default.png');
     }
 
     public function toSearchableArray(): array

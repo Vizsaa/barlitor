@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Checkout - BruTor Shop')
+@section('title', 'Checkout - BarliTor Shop')
 
 @section('content')
 <div class="bg-[#1a1a1a] border-b border-gray-800 py-6 mb-8">

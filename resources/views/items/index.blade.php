@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Items - BruTor Shop')
+@section('title', 'Items - BarliTor Shop')
 
 @section('content')
 <!-- Page Header -->

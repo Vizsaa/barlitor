@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit Item - BruTor Shop')
+@section('title', 'Edit Item - BarliTor Shop')
 
 @section('content')
 <div class="bg-[#1a1a1a] border-b border-gray-800 py-6">
@@ -164,7 +164,7 @@
                             <div>
                                 <p class="text-[11px] text-gray-500 mb-2">No gallery images yet. Showing legacy image if available.</p>
                                 @php
-                                    $legacyImg = $item->image_path ? asset($item->image_path) : asset('images/default.png');
+                                    $legacyImg = $item->image_path ? asset($item->image_path) : asset('images/items/default.png');
                                 @endphp
                                 <div class="w-28 h-28 rounded-md overflow-hidden border border-gray-700 bg-[#111111] flex items-center justify-center">
                                     <img src="{{ $legacyImg }}" alt="Item Image" class="w-full h-full object-cover">

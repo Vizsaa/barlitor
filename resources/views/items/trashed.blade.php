@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Trashed Items - BruTor Shop')
+@section('title', 'Trashed Items - BarliTor Shop')
 
 @section('content')
 <div class="bg-[#1a1a1a] border-b border-gray-800 py-8">
@@ -50,7 +50,7 @@
                             <tr class="hover:bg-[#181818]">
                                 <td class="px-4 py-3 align-middle">
                                     @php
-                                        $thumb = $item->thumbnail ?? asset($item->image_path ?: 'images/default.png');
+                                        $thumb = $item->thumbnail ?? asset($item->image_path ?: 'images/items/default.png');
                                     @endphp
                                     <img src="{{ $thumb }}" alt="{{ $item->title }}" class="w-12 h-12 rounded object-cover border border-gray-700">
                                 </td>
@@ -94,4 +94,3 @@
     @endif
 </div>
 @endsection
-

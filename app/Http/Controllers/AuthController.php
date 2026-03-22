@@ -34,12 +34,12 @@ class AuthController extends Controller
             if ($user->status === 'inactive') {
                 Auth::logout();
                 return back()
-                    ->with('error', 'Your account has been deactivated. Please contact support.')
+                    ->with('error', 'Your account is deactivated. Please wait for an admin to reactivate your account.')
                     ->withInput(['email' => $request->email]);
             }
 
             // Seeded demo accounts bypass email verification
-            $bypassVerification = in_array($user->email, ['admin@brutor.com', 'john@example.com'], true);
+            $bypassVerification = in_array($user->email, ['admin@barlitor.com', 'john@example.com'], true);
             if (!$bypassVerification && !$user->hasVerifiedEmail()) {
                 Auth::logout();
                 return back()
@@ -63,22 +63,22 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|min:2|max:255',
-            'email'    => 'required|email|unique:users,email',
+            'name' => 'required|string|min:2|max:255',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|min:4|confirmed',
-            'avatar'   => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
         ], [
-            'name.required'     => 'Full name is required.',
-            'name.min'          => 'Name must be at least 2 characters.',
-            'email.required'    => 'Email address is required.',
-            'email.email'       => 'Please enter a valid email address.',
-            'email.unique'      => 'This email is already registered. Please log in.',
+            'name.required' => 'Full name is required.',
+            'name.min' => 'Name must be at least 2 characters.',
+            'email.required' => 'Email address is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'This email is already registered. Please log in.',
             'password.required' => 'Password is required.',
-            'password.min'      => 'Password must be at least 4 characters.',
-            'password.confirmed'=> 'Passwords do not match.',
-            'avatar.image'      => 'Avatar must be an image file.',
-            'avatar.mimes'      => 'Accepted avatar formats: JPG, PNG, WEBP.',
-            'avatar.max'        => 'Avatar must not exceed 5MB.',
+            'password.min' => 'Password must be at least 4 characters.',
+            'password.confirmed' => 'Passwords do not match.',
+            'avatar.image' => 'Avatar must be an image file.',
+            'avatar.mimes' => 'Accepted avatar formats: JPG, PNG, WEBP.',
+            'avatar.max' => 'Avatar must not exceed 5MB.',
         ]);
 
         $avatarPath = null;

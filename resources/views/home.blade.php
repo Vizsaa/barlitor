@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'BruTor Shop - Home')
+@section('title', 'BarliTor Shop - Home')
 
 @section('content')
 <!-- Hero Section -->
@@ -13,7 +13,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div class="py-20 md:py-32 lg:py-40">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight uppercase">
-                Welcome to <span class="text-orange-500">BruTor Shop</span>
+                Welcome to <span class="text-orange-500">BarliTor Shop</span>
             </h1>
             <p class="mt-4 max-w-2xl text-lg md:text-xl text-gray-400">
                 Premium motorcycle parts, essential tools, and professional gear. Build, repair, and ride with confidence.
@@ -174,10 +174,7 @@
                 @foreach($items as $item)
                     <div class="bg-[#1a1a1a] rounded-lg border border-gray-800 overflow-hidden group hover:-translate-y-1 hover:border-orange-500/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] transition-all duration-300 flex flex-col h-full">
                         <div class="relative h-48 overflow-hidden bg-[#111111]">
-                            @php
-                                $image = $item->image_path ? asset($item->image_path) : asset('images/default.png');
-                            @endphp
-                            <img src="{{ $image }}" alt="{{ $item->title ?: $item->description }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 mix-blend-lighten">
+                            <img src="{{ $item->thumbnail }}" alt="{{ $item->title ?: $item->description }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 mix-blend-lighten">
 
                             @if($item->type === 'tool')
                                 <div class="absolute top-3 right-3 bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider shadow-md">

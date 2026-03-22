@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $item->title . ' - BruTor Shop')
+@section('title', $item->title . ' - BarliTor Shop')
 
 @section('content')
 <!-- Breadcrumbs / Back Navigation -->
@@ -25,30 +25,49 @@
         <div>
             @php
                 $images = $item->images ?? collect();
+                // Include legacy image_path in gallery if it's not already there
+                if ($item->image_path && $images->isEmpty()) {
+                    $images = collect([
+                        (object) ['image_path' => $item->image_path],
+                    ]);
+                }
                 $mainSrc = $item->thumbnail;
             @endphp
-            <div class="bg-[#111111] rounded-xl border border-gray-800 overflow-hidden shadow-2xl relative aspect-square md:aspect-auto md:h-[500px] flex flex-col">
-                <div class="flex-1 flex items-center justify-center">
-                    <img id="mainPhoto" src="{{ $mainSrc }}" alt="{{ $item->title }}" class="w-full h-full object-contain p-4 mix-blend-lighten">
-                </div>
-                
-                @if($item->type === 'tool')
-                    <div class="absolute top-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1.5 rounded uppercase tracking-wider shadow-lg">
-                        <i class="fa-solid fa-wrench mr-1"></i> Tool / Rental
-                    </div>
-                @endif
-
-                @if($images->count() > 1)
-                    <div class="border-t border-gray-800 bg-[#151515] px-3 py-2">
-                        <div class="flex gap-2 overflow-x-auto pb-1">
+            <style>
+                /* Hide scrollbar for Chrome, Safari and Opera */
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+                /* Hide scrollbar for IE, Edge and Firefox */
+                .no-scrollbar {
+                    -ms-overflow-style: none;  /* IE and Edge */
+                    scrollbar-width: none;  /* Firefox */
+                }
+            </style>
+            <div class="bg-[#111111] rounded-xl border border-gray-800 overflow-hidden shadow-2xl relative">
+                <div class="flex flex-col-reverse md:flex-row">
+                    {{-- Thumbnails Strip (left on desktop, bottom on mobile) --}}
+                    @if($images->count() > 1)
+                        <div class="md:w-20 flex md:flex-col gap-2 p-2 overflow-x-auto md:overflow-y-auto md:max-h-[400px] border-t md:border-t-0 md:border-r border-gray-800 bg-[#151515] no-scrollbar">
                             @foreach($images as $img)
                                 <button type="button"
-                                        class="thumb-btn w-16 h-16 rounded-md overflow-hidden border border-gray-700 hover:border-orange-500 flex-shrink-0 focus:outline-none"
+                                        class="thumb-btn w-16 h-16 rounded-md overflow-hidden border-2 border-gray-700 hover:border-orange-500 flex-shrink-0 focus:outline-none transition-all"
                                         data-src="{{ asset($img->image_path) }}">
                                     <img src="{{ asset($img->image_path) }}" alt="Thumb" class="w-full h-full object-cover">
                                 </button>
                             @endforeach
                         </div>
+                    @endif
+
+                    {{-- Main Image --}}
+                    <div class="flex-1 flex items-center justify-center h-[350px] md:h-[400px]">
+                        <img id="mainPhoto" src="{{ $mainSrc }}" alt="{{ $item->title }}" class="w-full h-full object-contain p-4 mix-blend-lighten">
+                    </div>
+                </div>
+
+                @if($item->type === 'tool')
+                    <div class="absolute top-4 left-4 bg-orange-600 text-white text-xs font-bold px-3 py-1.5 rounded uppercase tracking-wider shadow-lg z-10">
+                        <i class="fa-solid fa-wrench mr-1"></i> Tool / Rental
                     </div>
                 @endif
             </div>
@@ -180,7 +199,7 @@
     </div>
 
     <!-- Reviews Section -->
-    <div class="mt-20 border-t border-gray-800 pt-12">
+    <div id="reviews" class="mt-20 border-t border-gray-800 pt-12">
         <h2 class="text-2xl font-bold text-white mb-8 flex items-center">
             <i class="fa-regular fa-comments text-orange-500 mr-3"></i> Customer Reviews
         </h2>
